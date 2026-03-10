@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ My Epic Learning Hub ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a0a0ff;
+            margin-bottom: 50px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 1.5s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .emoji-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+        h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .description {
+            color: #ddd;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+            transform: scale(1.05);
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 My Learning Hub 🚀</h1>
+        <p class="subtitle">Level up your skills with these awesome courses! 💻✨</p>
+
+        <div class="course-grid">
+            <!-- Security+ Card -->
+            <div class="course-card">
+                <div class="emoji-icon">🔒</div>
+                <h2>Security+</h2>
+                <p class="description">Master cybersecurity essentials, threats, and defenses. Get ready for the exam! 🛡️</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+
+            <!-- CCNA Card -->
+            <div class="course-card">
+                <div class="emoji-icon">🌐</div>
+                <h2>CCNA</h2>
+                <p class="description">Become a networking pro—routing, switching, and troubleshooting. 🚦</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+
+            <!-- Linux Card -->
+            <div class="course-card">
+                <div class="emoji-icon">🐧</div>
+                <h2>Linux</h2>
+                <p class="description">Command line mastery, system admin, and open-source power. 💪</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+
+            <!-- Python Card -->
+            <div class="course-card">
+                <div class="emoji-icon">🐍</div>
+                <h2>Python</h2>
+                <p class="description">Automate, analyze, and build with the world's favorite language. 🤖</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+
+            <!-- Cloud Computing Card -->
+            <div class="course-card">
+                <div class="emoji-icon">☁️</div>
+                <h2>Cloud Computing</h2>
+                <p class="description">AWS, Azure, GCP—deploy and scale like a pro! 🌩️</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+
+            <!-- More Courses Card (Placeholder) -->
+            <div class="course-card">
+                <div class="emoji-icon">📘</div>
+                <h2>More Courses</h2>
+                <p class="description">Add your own here—ethical hacking, Docker, Kubernetes, etc. ✨</p>
+                <a href="#" class="btn">Start Learning ➔</a>
+            </div>
+        </div>
+
+        <p style="color: #aaa; margin-top: 50px; font-size: 0.9rem;">✨ Add even more courses by copying the card code! ✨</p>
+    </div>
+</body>
+</html>
