@@ -106,6 +106,32 @@
             box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
             transform: scale(1.05);
         }
+
+        /* ===== LESSONS STYLES (ADDED) ===== */
+        .lessons {
+            margin-top: 20px;
+            text-align: left;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 15px;
+        }
+
+        .lessons a {
+            display: block;
+            color: #a0a0ff;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .lessons a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        /* ===== END LESSONS STYLES ===== */
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -136,7 +162,15 @@
                 <h2>Security+</h2>
                 <p class="description">Master cybersecurity essentials, threats, and defenses. Get ready for the exam! 🛡️</p>
                 <a href="#" class="btn">Start Learning ➔</a>
-            </div>
+
+                <!-- Lessons List -->
+                <div class="lessons">
+                    <a href="Module-9A-1-God-Mode.html">🔐 Lesson 9A-1: Evaluate Network Security Capabilities</a>
+                    <a href="Module-9A-2-God-Mode.html">🔐 Lesson 9A-2: Evaluate Network Security Capabilities</a>
+                    <a href="Module-9B-1-God-Mode.html">🔐 Lesson 9B-1: Evaluate Network Security Capabilities</a>
+                    <a href="Module-9B-2-God-Mode.html">🔐 Lesson 9B-2: Evaluate Network Security Capabilities</a>
+                </div>
+            </div> <!-- close Security+ card -->
 
             <!-- CCNA Card -->
             <div class="course-card">
