@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ Security+ 9A: GOD MODE — Network Security Baselines</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--bg:#0a0e1a;--bg2:#111827;--bg3:#1e293b;--card:#1e293b;--accent:#3b82f6;--accent2:#8b5cf6;--accent3:#06b6d4;--green:#10b981;--red:#ef4444;--orange:#f59e0b;--pink:#ec4899;--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;--border:#334155;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
+.glow{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.1;animation:oF 25s infinite ease-in-out;}
+.orb:nth-child(1){width:500px;height:500px;background:#10b981;top:3%;left:3%;}
+.orb:nth-child(2){width:420px;height:420px;background:#3b82f6;top:50%;right:5%;animation-delay:-9s;}
+.orb:nth-child(3){width:350px;height:350px;background:#8b5cf6;bottom:5%;left:35%;animation-delay:-16s;}
+@keyframes oF{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(55px,-45px) scale(1.1);}66%{transform:translate(-40px,50px) scale(.9);}}
+.w{position:relative;z-index:10;max-width:920px;margin:0 auto;padding:20px 16px 100px;}
+.hero{text-align:center;padding:50px 10px 30px;animation:fD .8s;}
+@keyframes fD{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+.hero h1{font-size:2.5em;font-weight:900;background:linear-gradient(135deg,#10b981,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+.hero p{color:var(--text2);font-size:1.05em;}
+.hero .obj{display:inline-block;margin-top:12px;background:var(--green);color:#fff;padding:6px 20px;border-radius:20px;font-weight:700;font-size:.85em;}
+.dv{text-align:center;margin:55px 0 30px;position:relative;}
+.dv::before{content:'';position:absolute;left:0;top:50%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--green),var(--accent),transparent);}
+.dv span{position:relative;background:var(--bg);padding:0 22px;font-size:1.5em;font-weight:900;color:var(--green);}
+.c{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;margin-bottom:22px;}
+.c h2{font-size:1.5em;margin-bottom:16px;}
+.c h3{font-size:1.2em;margin:22px 0 12px;color:var(--accent);}
+.c h4{font-size:1.05em;margin:18px 0 10px;color:var(--accent2);}
+.c p,.c li{color:var(--text2);line-height:1.85;font-size:.95em;}
+.c ul,.c ol{padding-left:24px;margin:10px 0;}
+.c li{margin-bottom:7px;}
+.c li strong,.c p strong{color:var(--text);}
+.an{background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(59,130,246,.07));border:1px solid var(--green);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;}
+.an::before{content:'💡 SUPER SIMPLE ANALOGY';position:absolute;top:-12px;left:18px;background:var(--green);color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;letter-spacing:.5px;}
+.et{background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(239,68,68,.08));border:2px solid var(--orange);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;animation:pb 3s infinite;}
+@keyframes pb{0%,100%{border-color:var(--orange);}50%{border-color:var(--red);}}
+.et::before{content:'🎯 EXAM TIP — MUST REMEMBER!';position:absolute;top:-12px;left:18px;background:linear-gradient(135deg,var(--orange),var(--red));color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;}
+.rw{background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(6,182,212,.07));border:1px solid var(--accent3);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;}
+.rw::before{content:'🌍 REAL-WORLD EXAMPLE';position:absolute;top:-12px;left:18px;background:var(--accent3);color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;}
+.dg{background:rgba(239,68,68,.08);border:2px solid var(--red);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;}
+.dg::before{content:'🚨 DANGER / CRITICAL CONCEPT';position:absolute;top:-12px;left:18px;background:var(--red);color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;}
+.kd{background:rgba(139,92,246,.08);border-left:4px solid var(--accent2);border-radius:0 14px 14px 0;padding:20px;margin:18px 0;}
+.kd .t{font-weight:800;color:var(--accent2);margin-bottom:6px;font-size:1.05em;}
+.rm{background:rgba(236,72,153,.08);border:2px dashed var(--pink);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;}
+.rm::before{content:'🧠 BRAIN LOCK — NEVER FORGET';position:absolute;top:-12px;left:18px;background:var(--pink);color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;}
+.gm{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(236,72,153,.08));border:2px solid var(--orange);border-radius:16px;padding:26px 22px 20px;margin:18px 0;position:relative;}
+.gm::before{content:'🔥 GOD MODE DETAIL';position:absolute;top:-12px;left:18px;background:linear-gradient(135deg,var(--orange),var(--pink));color:#fff;padding:3px 14px;border-radius:8px;font-size:.72em;font-weight:700;}
+.nb{background:rgba(59,130,246,.06);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:18px 20px;margin:18px 0;}
+.nb .t{font-weight:700;color:var(--accent);margin-bottom:6px;}
+.nb p{color:var(--text2);font-size:.92em;line-height:1.75;}
+.dia{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:20px;margin:18px 0;font-family:'JetBrains Mono',monospace;font-size:.76em;line-height:2;overflow-x:auto;white-space:pre;color:var(--accent3);}
+.ct{width:100%;border-collapse:separate;border-spacing:0;margin:18px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.ct th{background:linear-gradient(135deg,var(--green),var(--accent));color:#fff;padding:13px 15px;font-weight:700;font-size:.87em;text-align:left;}
+.ct td{padding:13px 15px;border-bottom:1px solid var(--border);font-size:.88em;color:var(--text2);}
+.ct tr:last-child td{border-bottom:none;}
+.ct tr:hover td{background:rgba(16,185,129,.04);}
+.ct td strong{color:var(--text);}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start;margin:18px 0;}
+.vs-s{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;}
+.vs-m{font-size:1.7em;font-weight:900;color:var(--orange);align-self:center;text-align:center;}
+@media(max-width:650px){.vs{grid-template-columns:1fr;}.vs-m{padding:5px 0;}}
+.mn{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(59,130,246,.08));border:2px dashed var(--green);border-radius:18px;padding:30px;margin:22px 0;text-align:center;}
+.mn .mt{font-size:1.2em;font-weight:800;color:var(--green);margin-bottom:8px;}
+.mn .ml{font-size:2.3em;font-weight:900;letter-spacing:12px;background:linear-gradient(135deg,var(--green),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:12px 0;}
+.mn .mb{text-align:left;margin-top:16px;}
+.mn .mb div{padding:5px 0;font-size:.93em;color:var(--text2);}
+.mn .mb span{font-weight:700;color:var(--green);font-size:1.1em;}
+.mn .mp{margin-top:14px;color:var(--orange);font-size:1em;font-weight:700;font-style:italic;}
+.cs{background:var(--card);border:3px solid var(--orange);border-radius:18px;padding:28px;margin:22px 0;}
+.cs h2{color:var(--orange);margin-bottom:16px;font-size:1.4em;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.ci{background:var(--bg3);border-radius:12px;padding:16px;}
+.ci h4{color:var(--green);margin-bottom:8px;font-size:.93em;}
+.ci p{font-size:.84em;color:var(--text2);line-height:1.6;}
+.qq{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:24px;margin-bottom:18px;transition:all .5s;}
+.qq.cor{border-color:var(--green);box-shadow:0 0 25px rgba(16,185,129,.2);}
+.qq.wrg{border-color:var(--red);box-shadow:0 0 25px rgba(239,68,68,.2);}
+.qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.qn{background:var(--green);color:#fff;padding:4px 14px;border-radius:8px;font-weight:700;font-size:.82em;}
+.qp{color:var(--text3);font-size:.82em;}
+.qt{font-weight:600;margin-bottom:16px;font-size:1.05em;line-height:1.7;color:var(--text);}
+.qo{display:flex;flex-direction:column;gap:10px;}
+.qo div{padding:13px 18px;border-radius:12px;background:var(--bg3);border:2px solid var(--border);cursor:pointer;transition:all .3s;font-size:.93em;color:var(--text2);}
+.qo div:hover:not(.dn){border-color:var(--green);background:rgba(16,185,129,.08);color:var(--text);}
+.qo div.cc{border-color:var(--green)!important;background:rgba(16,185,129,.12)!important;color:var(--green)!important;cursor:default;}
+.qo div.ww{border-color:var(--red)!important;background:rgba(239,68,68,.1)!important;color:var(--red)!important;cursor:default;}
+.qo div.dn{cursor:default;opacity:.55;}
+.qe{margin-top:14px;padding:16px;border-radius:12px;display:none;font-size:.9em;line-height:1.75;color:var(--text2);}
+.qe.sh{display:block;}
+.qe.gc{background:rgba(16,185,129,.08);border:1px solid var(--green);}
+.qe.gr{background:rgba(239,68,68,.08);border:1px solid var(--red);}
+.tb{position:fixed;bottom:25px;right:25px;z-index:100;background:var(--green);color:#fff;border:none;width:50px;height:50px;border-radius:50%;font-size:1.4em;cursor:pointer;box-shadow:0 4px 15px rgba(16,185,129,.4);display:flex;align-items:center;justify-content:center;transition:.3s;}
+.tb:hover{background:var(--accent);transform:translateY(-3px);}
+.nav-box{position:fixed;bottom:25px;left:25px;z-index:100;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;font-size:.8em;color:var(--text2);box-shadow:0 4px 15px rgba(0,0,0,.3);max-width:220px;}
+.nav-box strong{color:var(--green);display:block;margin-bottom:4px;}
+@media(max-width:700px){.hero h1{font-size:1.6em;}.cg{grid-template-columns:1fr;}.w{padding:12px 10px 80px;}.nav-box{display:none;}}
+@media print{.glow,.tb,.nav-box{display:none!important;}body{background:#fff!important;color:#000!important;}.c,.an,.et,.rw,.dg,.kd,.rm,.gm,.nb,.mn,.cs,.qq{border:1px solid #ccc!important;background:#fff!important;}.c p,.c li,.qt,.qo div{color:#222!important;}}
+</style>
+</head>
+<body>
+<div class="glow"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+<button class="tb" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">⬆️</button>
+<div class="nav-box"><strong>🔒 Lesson 9A</strong>Network Security Baselines<br>Scroll for all topics + quiz!</div>
+
+<div class="w">
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+<h1>🔒 LESSON 9A — GOD MODE<br>Network Security Baselines</h1>
+<p>Security+ SY0-701 • Module 9 • Zero-to-Hero Complete Deep Dive</p>
+<div class="obj">📋 Objectives 4.1 & 4.5: Apply security techniques & Enhance security capabilities</div>
+<p style="margin-top:15px;color:var(--orange);font-weight:700;font-size:1.1em;">⚠️ ZERO SKIPPING • EXTREME DETAIL • EVERY TOPIC COVERED ⚠️</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="c">
+<h2>📑 What's In Lesson 9A (Everything!)</h2>
+<p>This lesson teaches you how organizations set up <strong>security RULES</strong> for their networks and then make those networks <strong>STRONGER</strong> (hardened). Think of it as: first you set the standard, then you lock everything down! 🔒💪</p>
+<ol>
+<li><strong>📏 Secure Baselines</strong> — The security "rulebook" every system must follow</li>
+<li><strong>🏛️ CIS Benchmarks</strong> — The world's most trusted security checklists</li>
+<li><strong>🎖️ STIGs</strong> — Military-grade security configurations</li>
+<li><strong>🤖 Automation Tools</strong> — Puppet, Chef, Ansible, Group Policy</li>
+<li><strong>📊 SCAP & Compliance Tools</strong> — Automated security checking</li>
+<li><strong>🔧 Hardening Concepts</strong> — Making systems STRONGER</li>
+<li><strong>🔌 Switch & Router Hardening</strong> — Locking down network equipment</li>
+<li><strong>🖥️ Server Hardening</strong> — Securing your servers</li>
+<li><strong>📡 Wireless Network Design</strong> — WAPs, channels, site surveys, heat maps</li>
+<li><strong>🔐 Wireless Encryption</strong> — WEP → WPA → WPA2 → WPA3 evolution</li>
+<li><strong>⚠️ WPS Vulnerabilities</strong> — Why Wi-Fi Protected Setup is dangerous</li>
+<li><strong>🔑 Wi-Fi Authentication Methods</strong> — PSK, SAE, Enterprise, RADIUS</li>
+<li><strong>🚪 Network Access Control (NAC)</strong> — The network gatekeeper</li>
+<li><strong>❓ MEGA QUIZ</strong> — 15 exam-style questions</li>
+<li><strong>📝 GOD MODE CHEAT SHEET</strong></li>
+</ol>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>1️⃣ Secure Baselines — The Security Rulebook</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>📏 What Is a Secure Baseline?</h2>
+
+<div class="kd">
+<div class="t">📖 Definition: Secure Baseline</div>
+<p>A <strong>secure baseline</strong> is a <strong>collection of standard security configurations and settings</strong> that ALL systems in an organization MUST follow. It's like a <strong>security rulebook</strong> that says: "Every computer, server, router, and device in our company MUST be configured THIS way — no exceptions!" 📏📋🔒</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🏠 The Building Code Analogy — This Makes It CRYSTAL CLEAR:</strong></p>
+<p>Before anyone builds a house 🏠, there are <strong>building codes</strong> — official rules that say:</p>
+<ul>
+<li>✅ Walls must be THIS thick</li>
+<li>✅ Electrical wiring must follow THIS pattern</li>
+<li>✅ Fire exits must be HERE</li>
+<li>✅ Smoke detectors must be installed in EVERY room</li>
+<li>✅ Foundations must be THIS deep</li>
+</ul>
+<p>These codes are the <strong>MINIMUM</strong> standards. You CAN go above and beyond (extra strong walls, more fire exits), but you can NEVER go below! 📏</p>
+<p>A <strong>secure baseline</strong> is the EXACT same concept for computers and networks! It's the <strong>"building code" for IT systems</strong> — the MINIMUM security configurations that every device MUST have before it's allowed to operate! 🖥️📏🔒</p>
+</div>
+
+<h3>📋 What Does a Secure Baseline Cover?</h3>
+<p>A secure baseline includes settings for ALL of these areas:</p>
+<ul>
+<li>🔥 <strong>Firewall configurations</strong> — What traffic is allowed and blocked</li>
+<li>🔌 <strong>Router & switch settings</strong> — How network equipment is configured</li>
+<li>📡 <strong>Wireless access point settings</strong> — Wi-Fi security configurations</li>
+<li>🩹 <strong>Patching & updates</strong> — Rules for keeping software up-to-date</li>
+<li>🔑 <strong>Password policies</strong> — Minimum length, complexity, expiration</li>
+<li>🔐 <strong>Encryption requirements</strong> — What must be encrypted and how</li>
+<li>👤 <strong>Access controls</strong> — Who can access what</li>
+<li>📝 <strong>Logging & monitoring</strong> — What events to track</li>
+<li>🛡️ <strong>Endpoint protection</strong> — Antivirus, antimalware requirements</li>
+<li>🚫 <strong>Disabled services</strong> — Unnecessary services that must be turned OFF</li>
+</ul>
+
+<div class="dia">
+  📏 SECURE BASELINE — THE BIG PICTURE:
+  ═══════════════════════════════════════════
+
+  WITHOUT A BASELINE (Chaos! 😱):
+  ┌─────────────────────────────────────────┐
+  │ Computer A: Password = "123"             │ 😱
+  │ Computer B: No antivirus installed       │ 😱
+  │ Server C: Default admin password         │ 😱
+  │ Router D: Telnet enabled (insecure!)     │ 😱
+  │ Wi-Fi E: No encryption!                  │ 😱
+  │                                           │
+  │ Every device configured DIFFERENTLY!     │
+  │ Some secure, some NOT! Total mess! 🗑️   │
+  └─────────────────────────────────────────┘
+
+  WITH A BASELINE (Order! ✅):
+  ┌─────────────────────────────────────────┐
+  │ ✅ ALL devices: 14+ character passwords  │
+  │ ✅ ALL devices: Antivirus installed      │
+  │ ✅ ALL devices: Default passwords changed│
+  │ ✅ ALL devices: SSH only (no Telnet!)    │
+  │ ✅ ALL devices: WPA3 encryption          │
+  │                                           │
+  │ EVERY device follows the SAME rules!     │
+  │ Consistent, secure, manageable! 🔒✅    │
+  └─────────────────────────────────────────┘
+</div>
+
+<h3>🎯 Why Are Secure Baselines So Important?</h3>
+<ul>
+<li>🔒 <strong>Consistency</strong> — Every device is secured the same way. No weak links!</li>
+<li>📏 <strong>Measurable</strong> — You can CHECK if devices comply (are they following the rules?)</li>
+<li>🚀 <strong>Efficiency</strong> — Automate deployments instead of configuring each device manually</li>
+<li>🛡️ <strong>Reduced attack surface</strong> — Unnecessary services disabled, default passwords changed</li>
+<li>📋 <strong>Compliance</strong> — Meets regulatory requirements (PCI DSS, HIPAA, etc.)</li>
+<li>🔍 <strong>Auditing</strong> — Easy to detect deviations from the standard</li>
+<li>🏗️ <strong>Starting point for hardening</strong> — Baselines are the FOUNDATION; hardening builds on top</li>
+</ul>
+
+<div class="et">
+<p style="padding-top:8px"><strong>Key exam concept:</strong> A secure baseline is the <strong>STARTING POINT</strong> (minimum security), NOT the finish line! It establishes the <strong>FLOOR</strong> of security. Organizations then <strong>HARDEN</strong> (make even stronger) on top of the baseline! Think: Baseline = minimum → Hardening = making it even better! 📏→🔒→💪</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>2️⃣ CIS Benchmarks — The Gold Standard</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🏛️ CIS Benchmarks</h2>
+
+<div class="kd">
+<div class="t">📖 Definition: CIS Benchmarks</div>
+<p>The <strong>Center for Internet Security (CIS) Benchmarks</strong> are <strong>globally recognized, community-developed best practice guides</strong> for securely configuring IT systems. They're like a <strong>master cookbook of security recipes</strong> — step-by-step instructions for making EVERY type of system secure! 🏛️📖🔒</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>📚 The Master Recipe Book Analogy:</strong></p>
+<p>Imagine you're opening a restaurant chain 🍽️ with 500 locations worldwide. You need EVERY restaurant to make food the SAME way — same quality, same safety standards, same recipes.</p>
+<p>So you create a <strong>MASTER RECIPE BOOK</strong> 📖 that says: "For chicken soup: use THESE ingredients, cook at THIS temperature, for THIS long. For steak: season with THESE spices, cook to THIS internal temperature."</p>
+<p>CIS Benchmarks are the <strong>MASTER RECIPE BOOK for IT security!</strong> They say: "For Windows 11: configure THESE settings. For Linux servers: disable THESE services. For Cisco routers: use THESE configurations." Step by step, setting by setting! 🖥️📋✅</p>
+</div>
+
+<h3>📚 What Do CIS Benchmarks Cover?</h3>
+<p>CIS Benchmarks exist for TONS of different systems — here are the main categories:</p>
+
+<table class="ct">
+<tr><th>Category</th><th>Examples</th><th>Simple Explanation</th></tr>
+<tr><td><strong>🪟 Operating Systems</strong></td><td>Windows Desktop, Windows Server, macOS, Linux (Ubuntu, Red Hat, etc.)</td><td>How to securely configure the operating systems on computers and servers</td></tr>
+<tr><td><strong>🌐 Network Devices</strong></td><td>Cisco IOS, Juniper, Palo Alto</td><td>How to lock down routers, switches, and firewalls</td></tr>
+<tr><td><strong>🌍 Web Browsers</strong></td><td>Chrome, Firefox, Edge, Safari</td><td>How to configure browsers for maximum security</td></tr>
+<tr><td><strong>🗄️ Database Servers</strong></td><td>Microsoft SQL, MySQL, Oracle, PostgreSQL</td><td>How to secure database systems that store data</td></tr>
+<tr><td><strong>📧 Email Servers</strong></td><td>Microsoft Exchange, Postfix</td><td>How to secure email infrastructure</td></tr>
+<tr><td><strong>🌐 Web Servers</strong></td><td>Apache, Nginx, Microsoft IIS</td><td>How to secure web servers that host websites</td></tr>
+<tr><td><strong>💻 Virtualization</strong></td><td>VMware ESXi, Hyper-V, Docker</td><td>How to secure virtual environments and containers</td></tr>
+<tr><td><strong>☁️ Cloud Platforms</strong></td><td>AWS, Azure, Google Cloud</td><td>How to secure cloud infrastructure</td></tr>
+<tr><td><strong>📋 Compliance Frameworks</strong></td><td>PCI DSS, NIST 800-53, SOX, ISO 27000</td><td>How to meet regulatory compliance requirements</td></tr>
+</table>
+
+<div class="gm">
+<p style="padding-top:8px"><strong>🔧 CIS-CAT Pro Tool:</strong></p>
+<p>CIS also provides a tool called <strong>CIS-CAT Pro</strong> — this is an automated scanner that <strong>checks your systems against CIS Benchmarks</strong> and tells you exactly what settings DON'T match the recommended configuration! Think of it like a health inspector who checks your restaurant against the recipe book and writes a report listing every deviation! 🔍📋</p>
+</div>
+
+<div class="et">
+<p style="padding-top:8px"><strong>Exam tip:</strong> If the exam asks about <strong>"globally recognized best practice security configuration guides"</strong> or <strong>"secure configuration benchmarks"</strong> → Answer: <strong>CIS Benchmarks!</strong> 🏛️📏 They are the GOLD STANDARD! 🎯</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>3️⃣ STIGs — Military-Grade Security</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🎖️ STIGs (Security Technical Implementation Guides)</h2>
+
+<div class="kd">
+<div class="t">📖 Definition: STIG</div>
+<p>A <strong>STIG (Security Technical Implementation Guide)</strong> is a <strong>security configuration guide created by DISA (Defense Information Systems Agency)</strong> for the <strong>U.S. Department of Defense (DoD)</strong>. STIGs are like CIS Benchmarks but specifically designed for <strong>MILITARY systems</strong>! They're often MORE strict than CIS Benchmarks because they protect national security! 🎖️🏛️🔒</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🏠 vs 🏰 — House vs Castle:</strong></p>
+<p><strong>CIS Benchmarks</strong> = Building codes for a HOUSE 🏠 — solid, safe, good for regular life</p>
+<p><strong>STIGs</strong> = Building codes for a CASTLE 🏰 — reinforced walls, moat, drawbridge, guards everywhere! Much more strict because it's protecting the KING (national security)!</p>
+<p>Both are security standards, but STIGs are often MORE restrictive because they protect military and government systems! 🎖️🔒💪</p>
+</div>
+
+<div class="vs">
+<div class="vs-s">
+<h4 style="color:var(--green)">🏛️ CIS Benchmarks</h4>
+<ul>
+<li>Created by <strong>Center for Internet Security</strong></li>
+<li>For <strong>ALL organizations</strong> (public & private)</li>
+<li>Community-developed</li>
+<li>Globally recognized</li>
+<li>Compliance tool: <strong>CIS-CAT Pro</strong></li>
+</ul>
+</div>
+<div class="vs-m">VS</div>
+<div class="vs-s">
+<h4 style="color:var(--accent)">🎖️ STIGs</h4>
+<ul>
+<li>Created by <strong>DISA</strong> (Defense Information Systems Agency)</li>
+<li>Specifically for <strong>U.S. DoD</strong> (military/government)</li>
+<li>Government-developed</li>
+<li>Often MORE strict</li>
+<li>Compliance tool: <strong>SCC (SCAP Compliance Checker)</strong></li>
+</ul>
+</div>
+</div>
+
+<div class="rm">
+<p style="padding-top:8px"><strong>🧠 MEMORIZE:</strong></p>
+<p><strong>CIS</strong> = Center for Internet Security → Benchmarks → For EVERYONE → Tool: CIS-CAT Pro</p>
+<p><strong>DISA</strong> = Defense Information Systems Agency → STIGs → For U.S. MILITARY → Tool: SCC</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>4️⃣ Automation & Compliance Tools</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🤖 Configuration Management & Compliance Tools</h2>
+<p>Imagine your company has <strong>10,000 computers</strong>. Are you going to manually configure each one following the secure baseline? That would take YEARS! 😱 That's why we use <strong>automation tools!</strong> 🤖⚡</p>
+
+<div class="an">
+<p style="padding-top:8px"><strong>📬 The Mail Carrier Analogy:</strong></p>
+<p>If you need to deliver a letter to ONE person, you walk it over yourself. 📬🚶</p>
+<p>If you need to deliver letters to 10,000 people... you need the POSTAL SERVICE with trucks, sorting machines, and delivery routes! 📬🚚🤖</p>
+<p>Configuration management tools are like the postal service — they <strong>automatically deliver security configurations</strong> to thousands of devices at once! 🤖📦💨</p>
+</div>
+
+<h3>🛠️ Configuration Management Tools (KNOW THESE!)</h3>
+
+<table class="ct">
+<tr><th>Tool</th><th>What It Does</th><th>Who Uses It</th></tr>
+<tr><td><strong>🤖 Puppet</strong></td><td>Automatically configures and maintains systems to match desired state. Uses its own declarative language.</td><td>Linux/Unix environments, large enterprises</td></tr>
+<tr><td><strong>👨‍🍳 Chef</strong></td><td>Automates infrastructure configuration using "recipes" and "cookbooks." Uses Ruby-based language.</td><td>Cloud environments, DevOps teams</td></tr>
+<tr><td><strong>📡 Ansible</strong></td><td>Agentless automation — pushes configs over SSH. Uses simple YAML "playbooks." Easy to learn!</td><td>All environments, very popular, Red Hat product</td></tr>
+<tr><td><strong>🪟 Group Policy (GPO)</strong></td><td>Microsoft's built-in tool for managing Windows systems centrally through Active Directory.</td><td>Windows environments, most common in corporate</td></tr>
+</table>
+
+<div class="gm">
+<p style="padding-top:8px"><strong>Key differences to remember:</strong></p>
+<ul>
+<li>🤖 <strong>Puppet</strong> = Has its own language, agent-based (software must be installed on each device)</li>
+<li>👨‍🍳 <strong>Chef</strong> = Uses "recipes/cookbooks" terminology, Ruby-based, agent-based</li>
+<li>📡 <strong>Ansible</strong> = <strong>AGENTLESS!</strong> (nothing needs to be installed on targets!), uses SSH, YAML playbooks — the easiest to learn! Red Hat product.</li>
+<li>🪟 <strong>Group Policy</strong> = Microsoft Windows ONLY, uses Active Directory, built into Windows Server</li>
+</ul>
+</div>
+
+<div class="et">
+<p style="padding-top:8px"><strong>Exam favorite:</strong> "Which configuration management tool is AGENTLESS?" → <strong>ANSIBLE!</strong> 📡 It doesn't require software to be installed on target devices — it pushes configurations over SSH! This is its biggest differentiator! 🎯</p>
+</div>
+
+<h3>📊 SCAP — Security Content Automation Protocol</h3>
+
+<div class="kd">
+<div class="t">📖 Definition: SCAP</div>
+<p><strong>SCAP (Security Content Automation Protocol)</strong> is a standardized framework for <strong>automatically checking</strong> whether systems comply with security baselines. It's like an <strong>automated inspector</strong> that checks every system against the rulebook and generates a report! 📊🤖✅❌</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🏗️ The Automated Building Inspector:</strong></p>
+<p>Instead of a human inspector walking through your building with a clipboard (slow, error-prone, expensive)... imagine a <strong>ROBOT inspector</strong> 🤖 that automatically scans every room, checks every wire, tests every fire alarm, and generates a detailed report in seconds! That's SCAP! 🤖📋⚡</p>
+</div>
+
+<h4>🛠️ SCAP Compliance Tools:</h4>
+<table class="ct">
+<tr><th>Tool</th><th>Created By</th><th>Checks Against</th></tr>
+<tr><td><strong>🔓 OpenSCAP</strong></td><td>Open-source community</td><td>CIS Benchmarks, STIGs, custom baselines</td></tr>
+<tr><td><strong>🎖️ SCC (SCAP Compliance Checker)</strong></td><td>DISA (military)</td><td>STIGs specifically</td></tr>
+<tr><td><strong>🏛️ CIS-CAT Pro</strong></td><td>Center for Internet Security</td><td>CIS Benchmarks specifically</td></tr>
+</table>
+
+<div class="rm">
+<p style="padding-top:8px"><strong>🧠 MEMORIZE the tool-to-standard pairings:</strong></p>
+<p>🏛️ CIS Benchmarks → Checked by → <strong>CIS-CAT Pro</strong></p>
+<p>🎖️ STIGs → Checked by → <strong>SCC (SCAP Compliance Checker)</strong></p>
+<p>📊 General → Checked by → <strong>OpenSCAP</strong> (can check both!)</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>5️⃣ Hardening — Making Systems STRONGER</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🔧 What Is Hardening?</h2>
+
+<div class="kd">
+<div class="t">📖 Definition: Hardening</div>
+<p><strong>Hardening</strong> is the process of <strong>making a system MORE secure by changing its default settings</strong>. Default settings are designed for EASE OF USE, not security! Hardening removes that convenience in favor of PROTECTION! 🔧🔒💪</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🏠 The New House Analogy:</strong></p>
+<p>When you buy a brand-new house 🏠, it comes with:</p>
+<ul>
+<li>🔑 A basic lock on the front door (default — easy to pick!)</li>
+<li>🪟 Regular glass windows (default — easy to break!)</li>
+<li>📦 A standard mailbox (default — easy to steal from!)</li>
+<li>🚪 No deadbolt, no alarm system, no cameras (default — no extra security!)</li>
+</ul>
+<p><strong>HARDENING the house</strong> means:</p>
+<ul>
+<li>🔒 Replacing the basic lock with a high-security deadbolt!</li>
+<li>🪟 Installing reinforced windows!</li>
+<li>📦 Getting a locking mailbox!</li>
+<li>📹 Adding a security camera system!</li>
+<li>🚨 Installing a burglar alarm!</li>
+<li>💡 Adding motion-sensor lights!</li>
+</ul>
+<p>The house didn't COME with all this security — you had to ADD it. That's hardening! 🏠→🏰</p>
+</div>
+
+<div class="dg">
+<p style="padding-top:8px"><strong>🚨 WHY Default Settings Are DANGEROUS!</strong></p>
+<p>Default configurations are an <strong>ATTACKER'S BEST FRIEND</strong> because:</p>
+<ul>
+<li>🔴 <strong>Default passwords are well-documented</strong> — Google "default password [device name]" and you'll find it! Every hacker knows this! 😈📖</li>
+<li>🔴 <strong>Unnecessary services running</strong> — More services = more doors for attackers to try! 🚪🚪🚪</li>
+<li>🔴 <strong>Insecure protocols enabled</strong> — Telnet (unencrypted!), HTTP (not HTTPS!)</li>
+<li>🔴 <strong>Weak password policies</strong> — "password" or "admin" allowed by default!</li>
+<li>🔴 <strong>Logging disabled</strong> — No record of what's happening (attackers love this!) 📝❌</li>
+<li>🔴 <strong>Every device of the same model has the SAME defaults</strong> — hack one, hack them all! 🏭💀</li>
+</ul>
+</div>
+
+<div class="rw">
+<p style="padding-top:8px"><strong>🌍 Real Example: Mirai Botnet (2016)</strong></p>
+<p>The <strong>Mirai botnet</strong> infected hundreds of thousands of IoT devices (cameras, routers, DVRs) by simply trying <strong>DEFAULT usernames and passwords!</strong> 😱 It didn't use any sophisticated hacking — just a list of 62 common default credentials like "admin/admin", "root/root", "user/user"!</p>
+<p>The infected devices were used to launch one of the <strong>LARGEST DDoS attacks in history</strong>, taking down major websites including Twitter, Netflix, Reddit, and CNN! 🌐💀</p>
+<p><strong>Lesson:</strong> CHANGE YOUR DEFAULT PASSWORDS! Hardening 101! 🔑→🔐</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>6️⃣ Switch & Router Hardening</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🔌 Hardening Switches & Routers</h2>
+<p>Switches and routers are the <strong>BACKBONE</strong> of every network — they're the devices that move data from one place to another. If an attacker compromises a switch or router, they can <strong>intercept, modify, or redirect ALL traffic!</strong> 🔌💀</p>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🛣️ The Highway System Analogy:</strong></p>
+<p>Think of your network as a <strong>highway system</strong> 🛣️:</p>
+<p><strong>Routers</strong> = Highway interchanges (they direct traffic between DIFFERENT networks, like interstate exits) 🔀</p>
+<p><strong>Switches</strong> = Local roads (they direct traffic within the SAME network, like streets in a neighborhood) 🏘️</p>
+<p>If a hacker takes control of a highway interchange... they can <strong>redirect all traffic</strong> wherever they want! Cars (data packets) heading to the bank end up at the hacker's hideout instead! 🚗→😈</p>
+</div>
+
+<h3>🔧 Switch & Router Hardening Checklist (MUST KNOW!)</h3>
+<table class="ct">
+<tr><th>#</th><th>Hardening Step</th><th>What It Means (Super Simple)</th><th>Why It Matters</th></tr>
+<tr><td>1️⃣</td><td><strong>🔑 Change Default Credentials</strong></td><td>Replace the factory username/password with strong unique ones</td><td>Default creds are PUBLIC KNOWLEDGE! 📖😈</td></tr>
+<tr><td>2️⃣</td><td><strong>🚫 Disable Unnecessary Services</strong></td><td>Turn OFF services you don't need (HTTP, Telnet, etc.)</td><td>Each service = another door for attackers 🚪</td></tr>
+<tr><td>3️⃣</td><td><strong>🔐 Use Secure Management Protocols</strong></td><td>Use SSH instead of Telnet, HTTPS instead of HTTP</td><td>Telnet/HTTP send data in PLAINTEXT (readable!) 👀</td></tr>
+<tr><td>4️⃣</td><td><strong>📋 Implement ACLs</strong></td><td>Access Control Lists — rules for what traffic is allowed</td><td>Only authorized devices can communicate 🚦</td></tr>
+<tr><td>5️⃣</td><td><strong>📝 Enable Logging & Monitoring</strong></td><td>Record everything that happens on the device</td><td>Detect suspicious activity and failed logins 🔍</td></tr>
+<tr><td>6️⃣</td><td><strong>🔌 Configure Port Security</strong></td><td>Limit which devices can connect to each switch port</td><td>Prevent unauthorized devices from plugging in 🚫🔌</td></tr>
+<tr><td>7️⃣</td><td><strong>🔑 Strong Password Policies</strong></td><td>Require complex passwords that are hard to guess</td><td>Reduce risk of password attacks 💪🔑</td></tr>
+<tr><td>8️⃣</td><td><strong>🏢 Physical Security</strong></td><td>Keep devices in locked rooms/cabinets</td><td>Prevent physical tampering 🔒🚪</td></tr>
+</table>
+
+<div class="mn">
+<div class="mt">🧠 MEMORY TRICK: Switch/Router Hardening</div>
+<div class="ml">C D S A L P P P</div>
+<div class="mb">
+<div><span>C</span> — <strong>C</strong>hange default credentials</div>
+<div><span>D</span> — <strong>D</strong>isable unnecessary services</div>
+<div><span>S</span> — <strong>S</strong>ecure management protocols (SSH/HTTPS)</div>
+<div><span>A</span> — <strong>A</strong>CLs (Access Control Lists)</div>
+<div><span>L</span> — <strong>L</strong>ogging & monitoring</div>
+<div><span>P</span> — <strong>P</strong>ort security</div>
+<div><span>P</span> — <strong>P</strong>assword policies</div>
+<div><span>P</span> — <strong>P</strong>hysical security</div>
+</div>
+<div class="mp">"Crazy Dogs Sniff Around Lamp Posts, Pretty Persistently" 🐕💡</div>
+</div>
+
+<div class="et">
+<p style="padding-top:8px"><strong>HUGE exam distinction:</strong></p>
+<p>🔴 <strong>Telnet</strong> = INSECURE! Sends everything as PLAINTEXT (attackers can read it!) ❌</p>
+<p>🟢 <strong>SSH</strong> = SECURE! Encrypts everything! ✅</p>
+<p>🔴 <strong>HTTP</strong> = INSECURE! Unencrypted web traffic! ❌</p>
+<p>🟢 <strong>HTTPS</strong> = SECURE! Encrypted web traffic! ✅</p>
+<p>The exam LOVES asking: "Which protocol should replace Telnet?" → <strong>SSH!</strong> 🔐</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>7️⃣ Server Hardening</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>🖥️ Server Hardening</h2>
+<p>Servers are the <strong>MOST VALUABLE targets</strong> in any organization because they store ALL the critical data — databases, email, websites, applications, file shares! 🖥️💎</p>
+
+<h3>🔧 Server Hardening Checklist</h3>
+<table class="ct">
+<tr><th>#</th><th>Hardening Step</th><th>What It Means</th></tr>
+<tr><td>1️⃣</td><td><strong>🔑 Change Default Credentials</strong></td><td>Same as network devices — change factory passwords immediately!</td></tr>
+<tr><td>2️⃣</td><td><strong>🚫 Disable Unnecessary Services</strong></td><td>Turn off EVERY service you don't need. Each one is a potential entry point for attackers!</td></tr>
+<tr><td>3️⃣</td><td><strong>🩹 Patch Regularly</strong></td><td>Apply security updates as soon as possible! Use automated patch management!</td></tr>
+<tr><td>4️⃣</td><td><strong>👤 Least Privilege</strong></td><td>Give each user the MINIMUM access they need — nothing more!</td></tr>
+<tr><td>5️⃣</td><td><strong>🔥 Firewalls & IDS</strong></td><td>Use host-based firewalls and intrusion detection to monitor/block threats</td></tr>
+<tr><td>6️⃣</td><td><strong>📏 Secure Configuration</strong></td><td>Follow CIS Benchmarks or STIGs for the specific server OS!</td></tr>
+<tr><td>7️⃣</td><td><strong>🔐 Strong Access Controls</strong></td><td>Strong passwords + MFA (multi-factor authentication) + PAM (Privileged Access Management)</td></tr>
+<tr><td>8️⃣</td><td><strong>📝 Logging & Monitoring</strong></td><td>Track login attempts, config changes, file access, and more</td></tr>
+<tr><td>9️⃣</td><td><strong>🛡️ Antivirus/Antimalware</strong></td><td>Install and keep updated — automatically detect and quarantine malware</td></tr>
+<tr><td>🔟</td><td><strong>🏢 Physical Security</strong></td><td>Server rooms locked, controlled access, surveillance cameras</td></tr>
+</table>
+
+<div class="et">
+<p style="padding-top:8px"><strong>Key exam concepts for server hardening:</strong></p>
+<p>🔹 <strong>Least Privilege</strong> = Users get ONLY the access they need, NOTHING more! If Bob only needs to read files, he should NOT have write or delete permissions!</p>
+<p>🔹 <strong>Attack Surface Reduction</strong> = Fewer running services = fewer ways for attackers to get in!</p>
+<p>🔹 <strong>PAM (Privileged Access Management)</strong> = Special tools to control and monitor admin-level accounts!</p>
+<p>🔹 <strong>MFA (Multi-Factor Authentication)</strong> = Requires 2+ factors to log in (password + phone code, etc.)</p>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<div class="dv"><span>8️⃣ Wireless Network Design</span></div>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="c">
+<h2>📡 Wireless Network Installation Considerations</h2>
+
+<div class="kd">
+<div class="t">📖 Why Wireless Design Matters for SECURITY</div>
+<p>A poorly designed wireless network with <strong>patchy coverage (dead zones)</strong> creates security vulnerabilities! If employees can't get a signal in certain areas, they might connect to <strong>rogue access points</strong> (fake Wi-Fi set up by attackers) or <strong>evil twins</strong> (attacker's AP mimicking the company's Wi-Fi name)! 📡⚠️😈</p>
+</div>
+
+<h3>📡 Key Wireless Vocabulary (MUST KNOW!)</h3>
+<table class="ct">
+<tr><th>Term</th><th>Definition</th><th>Simple Explanation</th></tr>
+<tr><td><strong>📡 WAP</strong></td><td>Wireless Access Point</td><td>The device that creates the Wi-Fi signal (the "radio tower" of your network) 📻</td></tr>
+<tr><td><strong>📛 SSID</strong></td><td>Service Set Identifier</td><td>The NAME of the wireless network (what you see when you look for Wi-Fi: "CompanyWiFi", "Starbucks", etc.) 📛</td></tr>
+<tr><td><strong>🆔 BSSID</strong></td><td>Basic Service Set Identifier</td><td>The MAC address (unique hardware ID) of a specific access point 🆔</td></tr>
+<tr><td><strong>📻 2.4 GHz Band</strong></td><td>Radio frequency band</td><td>Longer range but SLOWER speeds and MORE interference. Only 3 non-overlapping channels (1, 6, 11) 📻🐢</td></tr>
+<tr><td><strong>📻 5 GHz Band</strong></td><td>Radio frequency band</td><td>Shorter range but FASTER speeds and LESS interference. MORE non-overlapping channels available! 📻🚀</td></tr>
+<tr><td><strong>📻 6 GHz Band</strong></td><td>Newest radio frequency band (Wi-Fi 6E)</td><td>Even more channels, fastest speeds, least congestion! 📻⚡</td></tr>
+</table>
+
+<div class="an">
+<p style="padding-top:8px"><strong>📻 Radio Bands = Highway Lanes:</strong></p>
+<p><strong>2.4 GHz</strong> = A 3-lane highway 🛣️. Only 3 lanes (non-overlapping channels 1, 6, 11). Lots of traffic! But the road goes really FAR (good range)! 🐢📏</p>
+<p><strong>5 GHz</strong> = A 24-lane superhighway 🛣️🛣️. Way more lanes (channels)! Less traffic congestion! But the road is SHORTER (less range)! 🚀📏</p>
+<p><strong>6 GHz</strong> = A brand-new 50-lane mega highway 🛣️🛣️🛣️. Maximum lanes, minimum congestion, fastest speeds! But SHORTEST range! ⚡📏</p>
+</div>
+
+<h3>🗺️ Site Surveys & Heat Maps</h3>
+
+<div class="kd">
+<div class="t">📖 What Is a Site Survey?</div>
+<p>A <strong>site survey</strong> is the process of <strong>physically walking through a building or area</strong> with a Wi-Fi analyzer tool to <strong>measure signal strength, channel usage, and interference</strong> at every point. It tells you WHERE the signal is strong, where it's weak, and where there's interference! 🗺️🔍📡</p>
+</div>
+
+<div class="an">
+<p style="padding-top:8px"><strong>🌡️ The Thermometer Walk-Through:</strong></p>
+<p>Imagine you're checking the heating in a big office building in winter 🏢❄️. You walk through EVERY room with a thermometer 🌡️ and record the temperature. Some rooms are warm ✅, some are cold ❄️, some are TOO hot 🔥.</p>
+<p>You then create a <strong>COLOR MAP</strong> of the building showing warm areas (green/blue) and cold areas (red). This tells you where to add heaters or adjust the system! That color map = a <strong>HEAT MAP!</strong> 🗺️🌈</p>
+<p>A Wi-Fi site survey does the SAME thing but for <strong>SIGNAL STRENGTH</strong> instead of temperature! 📡🗺️</p>
+</div>
+
+<div class="kd">
+<div class="t">📖 What Is a Heat Map?</div>
+<p>A <strong>heat map</strong> is the VISUAL OUTPUT of a site survey — a color-coded map showing Wi-Fi signal strength throughout a building! 🗺️🌈</p>
+<ul>
+<li>🔵 <strong>Blue/Green</strong> = STRONG signal (good! ✅)</li>
+<li>🟡 <strong>Yellow</strong> = OK signal (acceptable 🤔)</li>
+<li>🔴 <strong>Red</strong> = WEAK/NO signal (bad! ❌ — security risk!)</li>
+</ul>
+</div>
+
+<div class="dia">
+  🗺️ HEAT MAP — VISUAL EXAMPLE:
+  ═══════════════════════════════
+
+  OFFICE FLOOR PLAN:
+  ┌─────────────────────────────────────────────┐
+  │                                               │
+  │    📡 WAP-1              📡 WAP-2            │
+  │                                               │
+  │  🔵🔵🔵🔵🟢🟢🟡🟡🟢🟢🔵🔵🔵🔵         │
+  │  🔵🔵🔵🟢🟢🟡🟡🟡🟡🟢🟢🔵🔵🔵         │
+  │  🔵🔵🟢🟢🟡🟡🔴🔴🟡🟡🟢🟢🔵🔵         │
+  │  🔵🟢🟢🟡🟡🔴🔴🔴🔴🟡🟡🟢🟢🔵         │
+  │  🟢🟢🟡🟡🔴🔴 ❌ 🔴🔴🟡🟡🟢🟢         │
+  │  🔵🟢🟢🟡🟡🔴🔴🔴🔴🟡🟡🟢🟢🔵         │
+  │                                               │
+  │    📡 WAP-3              📡 WAP-4            │
+  │                                               │
+  │  🔵🔵🔵🔵🟢🟢🟡🟡🟢🟢🔵🔵🔵🔵         │
+  │  🔵🔵🔵🟢🟢🟡🟡🟡🟡🟢🟢🔵🔵🔵         │
+  │                                               │
+  └─────────────────────────────────────────────┘
+
+  🔵 = Strong signal     ❌ = Dead zone (needs another WAP!)
+  🟢 = Good signal        🔴 = Weak signal
+  🟡 = OK signal
+
+  The dead zone in the middle needs ATTENTION! 
+  Options: Add a WAP, adjust power, move existing WAPs
+</div>
+
+<h3>🔧 What Causes Interference?</h3>
+<ul>
+<li>
